@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+    <body>
+        
+
+        <script>
+
+
+            function MultiplicatorUnitFailure() {
+                this.message = 'error!';
+                this.stack   = (new Error()).stack; 
+            }
+            MultiplicatorUnitFailure.prototype = Object.create(Error.prototype);
+            MultiplicatorUnitFailure.prototype.name = "MultiplicatorUnitFailure";
+
+
+            function primitiveMultiply(a, b) {
+                if (Math.random() < 0.5)
+                    return a * b;
+                else
+                    throw new MultiplicatorUnitFailure();
+            }
+            function reliableMultiply(a, b) {
+                for (;;){
+                    try { 
+                        var prim = primitiveMultiply(a, b);
+                        return prim;
+                    }
+                    catch (e) {
+                        if (e instanceof MultiplicatorUnitFailure) {
+                            console.log('Ошибка!');
+                        } else {
+                            throw e 
+                        } 
+                    } 
+                }
+            }
+
+            // Usage expectation.
+            console.log(reliableMultiply(8, 8));
+
+        </script>
+    </body>
+</html>

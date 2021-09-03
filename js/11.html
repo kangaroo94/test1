@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+    <body>
+        
+
+        <script>
+
+
+            let testData = [1, 2, 1990, 85, 24, "Vasya", "colya@example.com", "Rafshan", "ashan@example.com", true, false];
+
+            function slice(obj, start, end) {
+
+                var sliced = {};
+                var i = 0;
+                for (var k in obj) {
+                    if (i >= start && i < end)
+                        sliced[k] = obj[k];
+
+                    i++;
+                }
+
+                return sliced;
+            }
+
+            // Usage expectation.
+            slice(testData, 2, 6);
+            
+        </script>
+    </body>
+</html>
